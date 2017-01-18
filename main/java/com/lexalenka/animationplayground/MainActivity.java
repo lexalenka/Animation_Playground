@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +21,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Locale;
 
@@ -32,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    private String[] mPlanetTitles;
+    private String[] mDogNames;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +46,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mTitle = mDrawerTitle = getTitle();
-        mPlanetTitles = getResources().getStringArray(R.array.titles);
+        mDogNames = getResources().getStringArray(R.array.titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
+                R.layout.drawer_list_item, mDogNames));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -108,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle action buttons
         switch(item.getItemId()) {
             case R.id.action_websearch:
-                // create intent to perform web search for this planet
+                // create intent to perform web search for this dog
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, getSupportActionBar().getTitle());
                 // catch event that there's no activity to handle intent
@@ -133,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void selectItem(int position) {
         // update the main content by replacing fragments
-        Fragment fragment = new PlanetFragment();
+        Fragment fragment = new ImageFragment();
         Bundle args = new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+        args.putInt(ImageFragment.ARG_ID_NUMBER, position);
         fragment.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -143,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
+        setTitle(mDogNames[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
@@ -172,27 +179,31 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /**
-     * Fragment that appears in the "content_frame", shows a planet
-     */
-    public static class PlanetFragment extends Fragment {
-        public static final String ARG_PLANET_NUMBER = "planet_number";
+    public static class ImageFragment extends Fragment {
+        public static final String ARG_ID_NUMBER = "id_number";
 
-        public PlanetFragment() {
+        public ImageFragment() {
             // Empty constructor required for fragment subclasses
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_image, container, false);
-            int i = getArguments().getInt(ARG_PLANET_NUMBER);
-            String planet = getResources().getStringArray(R.array.titles)[i];
+            int i = getArguments().getInt(ARG_ID_NUMBER);
 
-            int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
-                    "drawable", getActivity().getPackageName());
+            String dognames = getResources().getStringArray(R.array.titles)[i];
+            String doginfo = getResources().getStringArray(R.array.doginfo)[i];
+
+            TextView textView = (TextView) getActivity().findViewById(R.id.textview);
+
+            textView.setText(doginfo);
+
+            int imageId = getResources().getIdentifier(dognames.toLowerCase(Locale.getDefault()), "drawable", getActivity().getPackageName());
             ((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
-            getActivity().setTitle(planet);
+
+            getActivity().setTitle(dognames);
+
+
             return rootView;
         }
     }

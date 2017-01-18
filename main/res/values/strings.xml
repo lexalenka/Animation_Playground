@@ -9,4 +9,29 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+        <string-array name="doginfo">
+          <item>  The Shiba Inu (柴犬) is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+                It looks similar to and is often mistaken for other Japanese dog breeds like the Akita Inu or Hokkaido, but the Shiba Inu is a different breed with a distinct blood line,
+                temperament and smaller size than other Japanese dog breeds.</item>
+            <item>
+                The Beagle is a breed of small-sized hound, similar in appearance to the much larger foxhound.
+                The Beagle is a scent hound, developed primarily for hunting hare. With a great sense of smell and their tracking instinct,
+                the Beagle is employed as detection dog for prohibited agricultural imports and foodstuffs in quarantine around the world. The Beagle is intelligent but single-minded.
+                It is a popular pet due to its size, good temper, and lack of inherited health problems.
+                Although beagle-type dogs have existed for 2,500 years, the modern breed was developed in Great Britain around the 1830s from several breeds, including the Talbot Hound, the North Country Beagle,
+                the Southern Hound, and possibly the Harrier.
+                Beagles have been depicted in popular culture since Elizabethan times in literature and paintings, and more recently in film, television, and comic books.
+                Snoopy of the comic strip Peanuts has been promoted as "the world's most famous beagle".
+            </item>
+            <item>
+                The Australian Shepherd, often known simply as the "Aussie", is a medium-sized breed of dog that was, despite its name, developed on ranches in the Western United States, during the 19th century.
+                There are different theories regarding the association of the breed with Australia, but there is no consensus on why it was adopted. Genetic research has found that Australian Shepherds and Border Collies are closely related to each other;
+                both are slightly more distantly related to other kinds of Collies and to Shetland Sheepdogs.
+                Aussies rose in popularity with a boom in Western riding,[why?] after World War II. They became known to the general public through rodeos, horse shows, and Disney movies made for television.
+                For many years, Aussies have been valued by stockmen for their versatility and trainability. They have a similar look to the popular English Shepherd and Border Collie breeds. While they continue to work as stock dogs and compete in herding trials, the breed has earned recognition in other roles due to their trainability and eagerness to please and are highly regarded for their skills in obedience.
+                Like all working breeds, the Aussie has considerable energy and drive and usually needs a job to do. It often excels at dog sports such as dog agility, and frisbee. They are also highly successful search and rescue dogs, disaster dogs, detection dogs, guide dogs, service dogs, and therapy dogs.
+                They are considered the 17th-most popular dog breed in the United States.
+            </item>
+        </string-array>
 </resources>
