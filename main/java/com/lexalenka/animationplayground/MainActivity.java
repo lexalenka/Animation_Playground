@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -195,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
             String doginfo = getResources().getStringArray(R.array.doginfo)[i];
 
             TextView textView = (TextView) getActivity().findViewById(R.id.textview);
+            textView.setMovementMethod(new ScrollingMovementMethod());
 
             textView.setText(doginfo);
 
